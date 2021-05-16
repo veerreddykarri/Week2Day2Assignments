@@ -27,7 +27,16 @@ public class DeleteLead {
         chromeDriver.findElementByXPath("//input[@name='phoneNumber']").sendKeys("1234");
         chromeDriver.findElementByLinkText("Find Leads").click();
         Thread.sleep(3000);
-        chromeDriver.findElementByXPath("(//*[@class='x-grid3-row-table']//div[@unselectable='on']/a[contains(@id, 'ext')])[1]").click();
-
+        chromeDriver.findElementByXPath("(//div[@class='x-grid3-cell-inner x-grid3-col-partyId']/a)[1]").click();
+        String getLeadID = chromeDriver.findElementByXPath("//span[@id='viewLead_companyName_sp']").getText();
+        String leadID = getLeadID.replaceAll("[A-Za-z()]","").trim();
+        chromeDriver.findElementByXPath("(//div[@class='frameSectionExtra']/a)[4]").click();
+        chromeDriver.findElementByLinkText("Find Leads").click();
+        chromeDriver.findElementByXPath("//input[@name='id']").sendKeys(leadID);
+        chromeDriver.findElementByXPath("//td[@class='x-btn-center']/em/button[text()='Find Leads']").click();
+        Thread.sleep(3000);
+        Assert.assertEquals("No records to display",chromeDriver.findElementByXPath("//div[@class='x-paging-info']").getText());
+        chromeDriver.close();
+        chromeDriver.quit();
     }
 }
