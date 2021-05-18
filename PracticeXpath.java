@@ -1,6 +1,7 @@
 package week2.day2.Assignments;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 import java.util.Iterator;
@@ -31,7 +32,7 @@ public class PracticeXpath {
         driver.findElementByXPath("(//div[@class='x-grid3-cell-inner x-grid3-col-partyId']/a)[1]").click();
         driver.switchTo().window(parentWindow);
         driver.findElementByXPath("(//img[@alt='Lookup'])[2]").click();
-        Thread.sleep(2000);
+        Thread.sleep(5000);
         driver.switchTo().window(childWindow);
         driver.findElementByXPath("(//div[@class='x-grid3-cell-inner x-grid3-col-partyId']/a)[2]").click();
         driver.switchTo().window(parentWindow);
